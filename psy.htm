@@ -1,0 +1,596 @@
+<meta charset="utf-8">
+
+<style>
+	a {
+		cursor: pointer;
+	}
+
+	input {
+		border: none;
+	}
+
+	hr {
+		margin: 30px 0;
+		border: 0;
+		border-top: 1px solid silver;
+	}
+</style>
+<script>
+	// const
+	const CSS = new class {
+		font = "font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';   "
+		nowrap = 'white-space: nowrap;  '
+		thinBorder = 'border: 1px solid silver;  '
+		thinPad = 'padding: 3px;  '
+		hCenter = 'text-align:center; '
+		// table: "border-collapse: collapse;",
+		th = this.font + this.nowrap + this.thinPad + "font-weight:normal; color:gray; font-size: 10px;  "
+		td = this.font + this.nowrap + this.thinBorder + this.thinPad + "font-size:12px; "
+		caption = this.font + this.nowrap + " font-weight:bold; margin-bottom:10px; " // text-align: left;
+		width(x) { return `width: ${x}px;  ` }
+	}
+
+	const systemFont = { fontFamily: `-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol` }
+	const CSS2 = new class {
+		font = { fontFamily: `font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol` }
+		fontSize = { fontSize: '12px' }
+		nowrap = { whiteSpace: 'nowrap' }
+		border = { border: '1px solid silver' }
+		pad = { padding: '3px' }
+		center = { textAlign: 'center' }
+		gray = { color: 'gray' }
+		width(x) { return { width: x + 'px' } }
+		td = { ...this.font, ...this.border, ...this.padding, ...this.fontSize }
+	}
+</script>
+
+
+<table id='drogen' style="border-collapse: collapse;">
+	<!-- <caption style="text-align: left;">Störungen durch psychotrope Substanzen</caption> -->
+	<tbody></tbody>
+</table>
+
+<a onclick="richCopy('#drogen')">copy</a>
+
+
+
+<br />
+<br />
+<br />
+
+
+
+<table id="familie" style="border-collapse: collapse;">
+	<tbody></tbody>
+</table>
+<a onclick="richCopy('#familie')">copy</a>
+
+
+
+<br />
+<br />
+<br />
+
+
+
+
+
+<table id="ausbildung" style="border-collapse: collapse;">
+	<tbody></tbody>
+</table>
+
+<a onclick="richCopy('#ausbildung')">copy</a>
+
+
+
+<br />
+<br />
+<br />
+
+
+
+
+<table id="sozial" style="border-collapse: collapse;">
+	<tbody></tbody>
+</table>
+<a onclick="richCopy('#sozial')">copy</a>
+
+<br />
+<br />
+<br />
+
+
+
+
+<table id="kontakte" style="border-collapse: collapse;">
+	<tr>
+		<td style="min-width:100px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI'; text-align: center; color:gray; font-size: 10px;">
+			Rolle
+		</td>
+		<td style="min-width:100px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI'; text-align: center; color:gray; font-size: 10px;">
+			Name
+		</td>
+		<td style="min-width:100px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI'; text-align: center; color:gray; font-size: 10px;">
+			Telefon
+		</td>
+		<td style="min-width:100px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI'; text-align: center; color:gray; font-size: 10px;">
+			Adresse
+		</td>
+	</tr>
+</table>
+<a onclick="addContactRow()">add</a> ---
+<a onclick="richCopy('#kontakte')">copy</a>
+
+<br />
+<br />
+<br />
+
+
+
+<!-- 
+<table id="medikation" style="border-collapse: collapse;">
+	<tbody>
+		<tr class="header">
+			<td style="min-width:100px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI'; text-align: center; color:gray; font-size: 10px;">
+				Wirkstoff
+			</td>
+			<td style="min-width:50px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI'; text-align: center; color:gray; font-size: 10px;">
+				morgens
+			</td>
+			<td style="min-width:50px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI'; text-align: center; color:gray; font-size: 11px;">
+				mittags
+			</td>
+			<td style="min-width:50px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI'; text-align: center; color:gray; font-size: 11px;">
+				abends
+			</td>
+			<td style="min-width:50px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI'; text-align: center; color:gray; font-size: 11px;">
+				nachts
+			</td>
+			<td style="min-width:50px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI'; text-align: center; color:gray; font-size: 11px;">
+				Einheit
+			</td>
+			<td style="min-width:80px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI'; text-align: center; color:gray; font-size: 11px;">
+				Tagessumme
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<a onclick="addMediRow()">add</a> ---
+<a onclick="richCopy('#medikation')">copy</a>
+
+<br />
+<br />
+<br /> -->
+
+
+<table id="soap" style="border-collapse: collapse;">
+	<tbody></tbody>
+</table>
+
+
+<a onclick="richCopy('#soap')">copy</a>
+
+
+
+<datalist id="contact-types">
+	<option value="Vater" />
+	<option value="Mutter" />
+	<option value="Sohn" />
+	<option value="Tochter" />
+	<option value="Psychiater" />
+	<option value="Psychiaterin" />
+	<option value="Psychologe" />
+	<option value="Psychologin" />
+	<option value="Hausarzt" />
+	<option value="Hausärztin" />
+	<option value="gesetzlicher Betreuer" />
+	<option value="gesetzliche Betreuerin" />
+</datalist>
+
+<hr />
+<script>
+	Node.prototype.addStyles = function (...o) {
+		for (let s of o)
+			for (let k in s)
+				this.style[k] = s[k]
+		return this
+	}
+	Node.prototype.addEvents = function (...o) {
+		for (let s of o)
+			for (let k in s)
+				this.setAttribute('on' + k, s[k])
+		return this
+	}
+	Node.prototype.addChildren = function (...o) {
+		for (let c of o)
+			this.appendChild(c)
+		return this
+	}
+	Node.prototype.repeat = function (x) {
+		return Array(x).fill(0).map(x => this.cloneNode(true))
+	}
+
+	function node(name, ...pp) {
+		let n = document.createElement(name)
+		for (let p of pp) {
+			if (p instanceof Node)
+				n.appendChild(p)
+			else if (typeof p == 'string')
+				n.appendChild(document.createTextNode(p))
+			else if (typeof p == 'object')
+				for (let key in p)
+					n.setAttribute(key, p[key])
+		}
+		return n
+	}
+	// function node2(name, ...pp) {
+	// 	let n = document.createElement(name)
+	// 	return function (...pp) {
+	// 		for (let p of pp) {
+	// 			if (p instanceof Node)
+	// 				n.appendChild(p)
+	// 			else if (typeof p == 'string')
+	// 				n.appendChild(document.createTextNode(p))
+	// 			else if (typeof p == 'object')
+	// 				for (let key in p)
+	// 					n.setAttribute(key, p[key])
+	// 		}
+	// 		return n
+	// 	}
+	// }
+	const TAG = new Proxy({}, {
+		get(target, prop, receiver) {
+			// console.log('get', target, prop, receiver)
+			// return node2(prop)
+			let n = document.createElement(prop)
+			return function (...pp) {
+				for (let p of pp) {
+					if (p instanceof Node)
+						n.appendChild(p)
+					else if (typeof p == 'string')
+						n.appendChild(document.createTextNode(p))
+					else if (typeof p == 'object')
+						for (let key in p)
+							n.setAttribute(key, p[key])
+				}
+				return n
+			}
+			// return "world";
+		}
+	})
+	// console.log('TAG', TAG.A('nice link', { href: 'https://google.de', target: '_blank' }))
+	// TAG.A
+	addToBody(TAG.A('nice link', { href: 'https://google.de', target: '_blank' }))
+	// function node(name, ...children) {
+	// 	let attributes = {}
+	// 	if ((typeof children[0] == 'object') && !(children[0] instanceof Node)) {
+	// 		console.log('attributes', children[0])
+	// 		attributes = children.shift()
+	// 	}
+	// 	let n = document.createElement(name)
+	// 	for (let key in attributes)
+	// 		n.setAttribute(key, attributes[key])
+	// 	for (let child of children)
+	// 		n.appendChild(typeof child == 'string' ? document.createTextNode(child) : child)
+	// 	return n
+	// }
+	// function node(name, attributes = {}, ...children) {
+	// 	let n = document.createElement(name)
+	// 	for (let key in attributes)
+	// 		n.setAttribute(key, attributes[key])
+	// 	for (let child of children)
+	// 		n.appendChild(typeof child == 'string' ? document.createTextNode(child) : child)
+	// 	return n
+	// }
+	class Table {
+
+		constructor(id) {
+			this.root = TAG.TABLE({ id }, TAG.CAPTION(), TAG.THEAD(), TAG.TBODY(), TAG.TFOOT())
+				.addStyles({ borderCollapse: 'collapse' })
+		}
+		addCaption(x) {
+			this.root.querySelector('caption').replaceWith(x)
+			return this
+		}
+		addHeader(...x) {
+			this.root.querySelector('thead').addChildren(...x)
+			return this
+		}
+		addRow(...x) {
+			this.root.querySelector('tbody').addChildren(...x)
+			return this
+		}
+		addToBody() {
+			document.body.appendChild(this.root)
+		}
+
+		addSadRow(score, letter, text) {
+			return this.addRow(TAG.TR(
+				// TAG.TD(score + '').addStyles(CSS2.td),
+				TAG.TD(letter).addStyles(CSS2.td, CSS2.center),
+				TAG.TD(text).addStyles(CSS2.td)
+			)
+				// .addEvents({click:`this.classList.toggle('selected')`})
+				.addEvents({ click: `this.style.fontWeight = this.style.fontWeight=='bold'?'normal':'bold'` })
+			)
+
+		}
+	}
+
+	// function tr(...c) {
+	// 	// console.log('cells', ...c)
+	// 	return node('tr', ...c)
+	// }
+	// function th(...c) {
+	// 	return node('th', ...c)
+	// }
+	// function td(...c) {
+	// 	return node('td', ...c)
+	// }
+	// function table(x = {}) {
+	// 	x = { head: [], body: [], ...x }
+	// 	return node('table', { id: x.id, style: "border-collapse: collapse;" },
+	// 		TAG.CAPTION(x.caption).addStyles(systemFont, { textAlign: 'left' }), //{ style: CSS.caption }
+	// 		TAG.THEAD(TAG.TR(...x.head)),
+	// 		TAG.TBODY(...x.body)
+	// 	)
+	// }
+	// function medicationTable() {
+	// 	let thtext = ['Wirkstoff', 'morgens', 'mittags', 'abends', 'nachts', 'Einheit', 'Tagessumme']
+	// 	return table({
+	// 		id: 'medication',
+	// 		caption: "Medikation bei Aufnahme",
+	// 		head: thtext.map(x => th({ style: CSS.th }, x).addStyles({ width: '50px' }))
+	// 		// body
+	// 	})
+	// }
+	console.log('css', CSS2.td)
+	new Table('medication')
+		.addCaption(TAG.CAPTION("Medikation bei Aufnahme",))
+		.addHeader(
+			...['Wirkstoff', 'morgens', 'mittags', 'abends', 'nachts', 'Einheit', 'Tagessumme']
+				.map(x => TAG.TH({ style: CSS.th }, x).addStyles({ width: '50px' }))
+		)
+		.addToBody()
+
+	new Table('sadpersons1')
+		.addCaption(TAG.CAPTION("SAD PERSONS scale version 1").addStyles(CSS2.nowrap))
+		.addSadRow(1, 'S', 'Male sex')
+		.addSadRow(1, 'A', 'Age < 20 or Age > 45')
+		.addSadRow(1, 'D', 'Depression')
+		.addSadRow(1, 'P', 'Previous attempt')
+		.addSadRow(1, 'E', 'Excess substance abuse')
+		.addSadRow(1, 'R', 'Rational Thinking loss')
+		.addSadRow(1, 'S', 'Social supports lacking')
+		.addSadRow(1, 'O', 'Organized Plan')
+		.addSadRow(1, 'N', 'No Spouse')
+		.addSadRow(1, 'S', 'Sickness')
+		.addToBody()
+
+
+	function addToBody(...c) {
+		for (let x of c)
+			document.body.appendChild(x)
+	}
+	// addToBody(
+	// 	medicationTable()
+	// )
+	addMediRow2()
+	addMediRow2()
+	addMediRow2()
+	function selectAll() {
+		setTimeout(() => document.execCommand('selectAll', false, null), 100)
+	}
+
+	function rowSum(event) {
+		let tr = event.target.closest("tr")
+		let tds = Array(...tr.querySelectorAll("td.amount"))
+		tds.map(x => x.textContent = eval(x.textContent.trim().replaceAll(',', '.')))
+		let values = tds.map(x => x.textContent.trim().replaceAll(',', '.') * 1)
+		let sum = values.reduce((a, b) => a + b, 0)
+		tr.querySelector(".daily").textContent = sum
+		// console.log("clo", tr, values)
+
+	}
+	function addCaption(table, caption) {
+		document.querySelector(table).insertAdjacentHTML("afterbegin", `<caption style="${CSS.caption}">${caption}</caption>`)
+	}
+	function repeat(x, f) {
+		return Array(x).fill(0).map(f)
+	}
+
+	// const CSS = new class {
+	// 	font = "font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';   "
+	// 	nowrap = 'white-space: nowrap;  '
+	// 	thinBorder = 'border: 1px solid silver;  '
+	// 	thinPad = 'padding: 3px;  '
+	// 	hCenter = 'text-align:center; '
+	// 	// table: "border-collapse: collapse;",
+	// 	th = this.font + this.nowrap + this.thinPad + "font-weight:normal; color:gray; font-size: 10px;  "
+	// 	td = this.font + this.nowrap + this.thinBorder + this.thinPad + "font-size:12px; "
+	// 	caption = this.font + this.nowrap + " font-weight:bold; margin-bottom:10px; " // text-align: left;
+	// 	width(x) { return `width: ${x}px;  ` }
+	// }
+	function addMediRow2() {
+		// let base = { contenteditable: true, style: CSS.td + CSS.hCenter + CSS.width(100) }
+		// let tdStyle = {...systemFont,}
+		const editable = { contenteditable: 'true' }
+		const border = { border: '1px solid silver' }
+		const padding = { padding: '1px' }
+		const center = { textAlign: 'center' }
+		const fontSize = { fontSize: '12px' }
+		const width = { width: '50px' }
+		let css = { ...systemFont, ...border, ...padding, ...fontSize }
+		document.querySelector("#medication tbody").appendChild(
+			TAG.TR(
+				TAG.TD(editable)
+					.addStyles(css, { width: '200px', textAlign: 'left' }),
+				// ...repeat(4, x =>
+				...TAG.TD(editable, { class: 'amount', }, '0') //onfocus: "selectAll()", onblur: "rowSum(event)" 
+					.addEvents({ focus: "selectAll()", blur: "rowSum(event)" })
+					.addStyles(css, center, width)
+					.repeat(4),
+				// 	),
+				TAG.TD(editable, 'mg') //{ onfocus: "selectAll()" }
+					.addEvents({ focus: "selectAll()" })
+					.addStyles(css, center, width),
+				TAG.TD({ class: 'daily' }, '0')
+					.addStyles(css, center, width, { color: 'gray' })// CSS.td + CSS.hCenter + 'color:gray;',)
+
+			)
+		)
+	}
+	function addMediRow() {
+		// oninput / onblur
+		document.querySelector("#medikation tbody").insertAdjacentHTML(
+			'beforeend',
+			`<tr>
+		        <td contenteditable="true" style="${CSS.td}">
+		            
+		        </td>
+		        <td contenteditable="true" class="amount" style="${CSS.td} text-align:center;" onfocus="selectAll()" onblur="rowSum(event)">
+		            0
+		        </td>
+		        <td contenteditable="true" class="amount" style="${CSS.td} text-align:center;" onfocus="selectAll()" onblur="rowSum(event)">
+		            0
+		        </td>
+		        <td contenteditable="true" class="amount" style="${CSS.td} text-align:center;" onfocus="selectAll()" onblur="rowSum(event)">
+		            0
+		        </td>
+		        <td contenteditable="true" class="amount" style="${CSS.td} text-align:center;" onfocus="selectAll()" onblur="rowSum(event)">
+		            0
+		        </td>
+		        <td contenteditable="true" style="${CSS.td} text-align:center;">
+		            mg
+		        </td>
+		        <td class="daily" style="${CSS.td} text-align:center; color: gray;">
+		            0
+		        </td>
+		    </tr>`
+		);
+
+	}
+	// addCaption('#medikation', 'Medikation am ' + today())
+	// addMediRow()
+
+	function addContactRow() {
+		document.querySelector("#kontakte tbody").insertAdjacentHTML(
+			'beforeend',
+			`<tr>
+		        <td contenteditable="true" style="${CSS.td} min-width:100px;">
+					<input list="contact-types" name="browser" id="browser">
+
+				</td>
+		        <td contenteditable="true" style="${CSS.td} min-width:100px;">
+				</td>
+		        <td contenteditable="true" style="${CSS.td} min-width:100px;">
+				</td>
+		        <td contenteditable="true" style="${CSS.td} min-width:100px;">
+				</td>
+			</tr>`
+		)
+	}
+
+	function add2Row(table, row) {
+		document.querySelector(table + " tbody").insertAdjacentHTML(
+			'beforeend',
+			`<tr>
+				<td style="${CSS.td}">
+					${row}
+				</td>
+		        <td contenteditable="true" style="${CSS.td} min-width:250px;">
+				</td>
+			</tr>`
+		)
+	}
+	addCaption('#familie', 'Familien Anamnese')
+	add2Row('#familie', 'Eltern')
+	add2Row('#familie', 'Geschwister')
+	add2Row('#familie', 'Kinder')
+	add2Row('#familie', 'Partner')
+
+	addCaption('#ausbildung', 'Ausbildung')
+	add2Row('#ausbildung', 'Schule')
+	add2Row('#ausbildung', 'Ausbildung')
+	add2Row('#ausbildung', 'Beruf')
+
+	addCaption('#sozial', 'Lebensführung')
+	add2Row('#sozial', 'Wohnung')
+	add2Row('#sozial', 'Finanzen')
+	// add2Row('#sozial', 'Betreuung')
+	add2Row('#sozial', 'Straftaten')
+	add2Row('#sozial', 'Freunde')
+	// add2Row('#sozial', 'Partner')
+	add2Row('#sozial', 'Hobbies')
+
+
+	addCaption('#soap', 'Einzelgespräch am ' + today())
+	add2Row('#soap', 'Subjective')
+	add2Row('#soap', 'Objective')
+	add2Row('#soap', 'Assessment')
+	add2Row('#soap', 'Plan')
+
+	addCaption('#kontakte', 'Kontakte')
+	addContactRow()
+
+	function addDrugRow(icd, text, tooltip) {
+		document.querySelector("#drogen tbody").insertAdjacentHTML(
+			'beforeend',
+			`<tr>
+				<td style="${CSS.td} width:30px;">
+					${icd}
+				</td>
+				<td title="${tooltip ?? ""}" style="${CSS.td} width:100px;">
+					${text}
+				</td>
+		        <td contenteditable="true" style="${CSS.td} width:400px;">
+				</td>
+			</tr>`
+		)
+	}
+	addCaption('#drogen', 'Störungen durch psychotrope Substanzen')
+	addDrugRow('F10', 'Alkohol')
+	addDrugRow('F11', 'Opioide')
+	addDrugRow('F12', 'Cannabinoide')
+	addDrugRow('F13', 'Sedativa', 'Benzodiazepine &#010;Pregabalin')
+	addDrugRow('F14', 'Kokain', 'Crack')
+	addDrugRow('F15', 'Stimulanzien', 'Amphetamine &#010;MDMA')
+	addDrugRow('F16', 'Halluzinogene', 'LSD &#010;Psilocibin &#010;Atropin')
+	addDrugRow('F17', 'Nikotin')
+	addDrugRow('F18', 'Lösungsmittel', 'Klebstoff &#010;Lack')
+
+	function richCopy(path) {
+		const content = document.querySelector(path).outerHTML
+		// const style = document.querySelector("style").outerHTML
+		const frame = content
+		//const frame = `<div>${style}${content}</div>`
+		console.log(frame)
+		const blob = new Blob([frame], { type: 'text/html' });
+		const clipboardItem = new window.ClipboardItem({ 'text/html': blob });
+		navigator.clipboard.write([clipboardItem]);
+	}
+
+
+	function today() {
+		return new Date().toLocaleDateString('de-DE', {
+			weekday: 'long',
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+		})
+	}
+
+	// new Sphere(20, 20, 20)
+	// 	.translate(0, 5, 10)
+	// 	.rotate(90, 0, 0)
+	// 	.subtract(new Box(10, 10, 10))
+	// 	.border({width:5})
+</script>
+
+<a onclick="addMediRow2()">add22</a> ---
+<a onclick="richCopy('#medication')">copy</a>
+
+
+<!-- <a onclick="addMediRow2()">add22</a> --- -->
+<a onclick="richCopy('#sadpersons1')">copy</a>
