@@ -1,6 +1,15 @@
+<!-- <script src="./more.js?v=3"></script> -->
 <script type="module">
-	import { sadPersons } from './sad.persons.js'
+	// import './more.js'
+	const hr = () => document.body.appendChild(TAG.HR({style:`margin: 30px 0;border: 0;border-top: 1px solid silver;`}))
+	let v = '3'
+	import { sadPersons } from './sad.persons.js?v=3'
 	import { drugs } from './icd10.drugs.js'
+	import { medication } from './medication.js'
+	import { TAG } from './tag.js'
 	sadPersons()
+	hr()
 	drugs()
+	hr()
+	medication()
 </script>

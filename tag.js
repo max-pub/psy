@@ -19,6 +19,13 @@ export const TAG = new Proxy({}, {
 	}
 })
 
+Node.prototype.$ = function (o) {
+	return this.querySelector(o)
+}
+
+Node.prototype.$$ = function (o) {
+	return [...this.querySelectorAll(o)]
+}
 
 Node.prototype.addStyles = function (...o) {
 	for (let s of o)
@@ -28,8 +35,16 @@ Node.prototype.addStyles = function (...o) {
 }
 Node.prototype.addEvents = function (...o) {
 	for (let s of o)
-		for (let k in s)
-			this.setAttribute('on' + k, s[k])
+		for (let k in s) {
+			// console.log('add event',k,s[k])
+			if (typeof s[k] == 'function') {
+				// console.log('add listener', k, s[k].call({a:1}))
+				this.addEventListener(k, s[k].bind(this))
+
+			}
+			if (typeof s[k] == 'string')
+				this.setAttribute('on' + k, s[k])
+		}
 	return this
 }
 Node.prototype.addChildren = function (...o) {

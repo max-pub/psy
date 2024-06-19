@@ -1,4 +1,6 @@
 import { TAG } from "./tag.js"
+import { CSS } from "./css.js";
+import { richCopy } from "./more.js";
 
 export class Table {
 
@@ -6,8 +8,9 @@ export class Table {
 		this.root = TAG.TABLE({ id }, TAG.CAPTION(), TAG.THEAD(), TAG.TBODY(), TAG.TFOOT())
 			.addStyles({ borderCollapse: 'collapse' })
 	}
-	addCaption(x) {
-		this.root.querySelector('caption').replaceWith(x)
+	addCaption(...x) {
+		let caption = x[0] instanceof Node ? x[0] : TAG.caption(...x)
+		this.root.querySelector('caption').replaceWith(caption)
 		return this
 	}
 	addHeader(...x) {
@@ -18,10 +21,31 @@ export class Table {
 		this.root.querySelector('tbody').addChildren(...x)
 		return this
 	}
+	addFooter(...x) {
+		this.root.querySelector('tfoot').addChildren(...x)
+		return this
+	}
 	addToBody() {
+		// document.body.appendChild(TAG.DIV(this.root))
 		document.body.appendChild(this.root)
+		return this
+	}
+	addCopyButton() {
+		let button = TAG.BUTTON('copy table')
+			.addStyles(CSS.pointer, CSS.font, CSS.margin(10, 0))
+			// .addEvents({ click: `richCopy('#${this.root.id}')` })
+			.addEvents({ click: () => richCopy('#' + this.root.id) })
+		document.body.appendChild(button)
+		return this
 	}
 
+	addRowButton() {
+		let button = TAG.BUTTON('add row')
+			.addStyles(CSS.pointer, CSS.font, CSS.margin(10, 0))
+			.addEvents({ click: () => this.addRow() })
+		document.body.appendChild(button)
+		return this
+	}
 	// addSadRow(score, letter, text) {
 	// 	return this.addRow(TAG.TR(
 	// 		// TAG.TD(score + '').addStyles(CSS2.td),
@@ -35,3 +59,5 @@ export class Table {
 	// }
 
 }
+{/* <a onclick="addMediRow2()">add22</a> --- */ }
+{/* <a onclick="richCopy('#medication')">copy</a> */ }
